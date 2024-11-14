@@ -71,6 +71,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social_media_project.wsgi.application'
 
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

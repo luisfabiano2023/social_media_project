@@ -27,25 +27,14 @@ def dt_u(request):
 @api_view(['GET'])
 def ls_u(request):
     if request.query_params:
-        items = Item.objects.filter(**request.query_params.dict())
+        items = md.User.objects.filter(**request.query_params.dict())
     else:
-        items = Item.objects.all()
+        items = md.User.objects.all()
  
     # if there is something in items else raise error
     if items:
-        serializer = ItemSerializer(items, many=True)
+        serializer = sz.UserSerializer(items, many=True)
         return Response(serializer.data)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-@api_view
-def login(request):
-	# initializing a login 
-	pass
-
-@api_view
-def signin(request):
-	# on final of this, create a new user 
-	ct_u()
-	pass
 
