@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_media_forum_app',
-    'social_media_forum_app.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
