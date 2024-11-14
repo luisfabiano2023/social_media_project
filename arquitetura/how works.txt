@@ -1,0 +1,2 @@
+a primeiro plano é criar um crud para o user
+um para os posts,considerando cascade-dependencies

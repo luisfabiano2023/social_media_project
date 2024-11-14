@@ -4,7 +4,7 @@ from . import views as vi
 
 urlpatterns = [
     path('',vi.show,name='show'),
-    path('lst',vi.ls_u,name='nme'),
-    path('ct',vi.ct_u,name='ct'),
+    path('lst',vi.lsu,name='nme'),
+    path('ct',vi.ctu,name='ct'),
 
 ]
