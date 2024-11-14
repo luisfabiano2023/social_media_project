@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from . import models as md
@@ -9,16 +7,7 @@ from rest_framework import status
 
 @api_view(['GET'])
 def show(request):
-    api = {
-        'all_items': '/',
-        'Search by Category': '/?category=category_name',
-        'Search by Subcategory': '/?subcategory=category_name',
-        'Add': '/create',
-        'Update': '/update/pk',
-        'Delete': '/item/pk/delete'
-    }
- 
-    return Response(api)
+ return render(request,'sm-app/index.html')
 
 @api_view(['POST'])
 def ct_u(request):
@@ -28,8 +17,7 @@ def ct_u(request):
 	if users.is_valid():
 		users.save()
 		return Response(users.data)
-	
-
+      
 @api_view(['GET'])
 def dt_u(request):
 	# delete a previous added fella
@@ -38,9 +26,17 @@ def dt_u(request):
 
 @api_view(['GET'])
 def ls_u(request):
-	# finalizing this crud
-
-	return Response(ls_u)
+    if request.query_params:
+        items = Item.objects.filter(**request.query_params.dict())
+    else:
+        items = Item.objects.all()
+ 
+    # if there is something in items else raise error
+    if items:
+        serializer = ItemSerializer(items, many=True)
+        return Response(serializer.data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 @api_view
 def login(request):
