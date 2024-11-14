@@ -3,6 +3,7 @@ from . import views as vi
 
 
 urlpatterns = [
-    path('',vi.show,name='show')
+    path('show',vi.show,name='show')
+
 
 ]

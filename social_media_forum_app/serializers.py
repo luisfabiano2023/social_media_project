@@ -3,11 +3,11 @@ from rest_framework import serializers
 
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Item
+from . import models
 
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = User
+		model = models.User
 		fields = ('username', 'name', 'id')
 
 

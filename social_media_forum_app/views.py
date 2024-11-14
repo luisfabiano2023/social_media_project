@@ -9,11 +9,16 @@ from rest_framework import status
 
 @api_view(['GET'])
 def show(request):
-	# only shows if the server still running
-
-	return Response(show)
-
-
+    api = {
+        'all_items': '/',
+        'Search by Category': '/?category=category_name',
+        'Search by Subcategory': '/?subcategory=category_name',
+        'Add': '/create',
+        'Update': '/update/pk',
+        'Delete': '/item/pk/delete'
+    }
+ 
+    return Response(api)
 
 @api_view(['POST'])
 def ct_u(request):
@@ -47,3 +52,4 @@ def signin(request):
 	# on final of this, create a new user 
 	ct_u()
 	pass
+
